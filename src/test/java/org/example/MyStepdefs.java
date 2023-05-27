@@ -4,8 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 
-public class MyStepdefs {
+public class MyStepdefs extends Utils{
     HomePage homePage = new HomePage();
     RegisterPage registerPage = new RegisterPage();
     RegisterResultPage registerResultPage = new RegisterResultPage();
@@ -53,5 +55,40 @@ public class MyStepdefs {
     @Then("I should email a friend successfully")
     public void i_should_email_a_friend_successfully() {
         emailAFriendResult.userSendAEmailToFriendResult();
+    }
+
+    @Given("I am on Demonopcommerce homepage")
+    public void iAmOnDemonopcommerceHomepage() {
+    }
+
+    @When("I click on {string} button")
+    public void iClickOnButton(String button_name) {
+        clickOnElement(By.xpath("//a[text()='"+button_name+" ']"));
+    }
+
+    @Then("I should able to verify I am navigated to related page {string} successfully")
+    public void iShouldAbleToVerifyIAmNavigatedToRelatedPageSuccessfully(String page_url) {
+       Assert.assertEquals(getCurrentURL(), page_url);
+    }
+
+    @And("I should able to verify the page title as {string}")
+    public void iShouldAbleToVerifyThePageTitleAs(String page_title) {
+        Assert.assertEquals(getTextFromElement(By.tagName("h1")), page_title);
+    }
+
+    @When("I hover over {string} category link")
+    public void iHoverOverCategoryLink(String category) {
+        homePage.mouseHoverOverAction(category);
+    }
+    @Then("I should able to verify after color change")
+    public void iShouldAbleToVerifyAfterColorChange() {
+    }
+    @When("I click on subcategory {string} link")
+    public void iClickOnSubcategoryLink(String subCategory) {
+        homePage.verifySubcategory(subCategory);
+    }
+    @Then("I should able to successfully navigated to {string} page")
+    public void iShouldAbleToSuccessfullyNavigatedToPage(String subCategoryResult) {
+        homePage.subCategoryOfComputerResult(subCategoryResult);
     }
 }

@@ -1,6 +1,6 @@
 Feature: emailAFriend
   @emailAFriend
-  Scenario: As a user, I should able to send refer email to friend successfully
+  Scenario: As a register user, I should able to send refer email to friend successfully
   so that, I can refer a product to friend
 
     Given I am on registration page

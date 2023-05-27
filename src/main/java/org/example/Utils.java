@@ -26,6 +26,9 @@ public class Utils extends BasePage{
     public static String getTextFromElement(By by){
         return driver.findElement(by).getText();
     }
+    public static String getCurrentURL(){
+        return driver.getCurrentUrl();
+    }
     public static long timestamp() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return timestamp.getTime();
